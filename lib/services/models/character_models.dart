@@ -22,3 +22,21 @@ class CharacterModel with _$CharacterModel {
   factory CharacterModel.fromJson(Map<String, dynamic> json) =>
       _$CharacterModelFromJson(json);
 }
+
+class CharactersResponse {
+  final List<CharacterModel>? results;
+  final String? error;
+
+  CharactersResponse({this.results}) : error = null;
+
+  CharactersResponse.withError({this.error}) : results = null;
+}
+
+class CharacterResponse {
+  final CharacterModel? results;
+  final String? error;
+
+  CharacterResponse({this.results}) : error = null;
+
+  CharacterResponse.withError({this.error}) : results = null;
+}
