@@ -1,16 +1,69 @@
-# flutter_testing_app
+# Flutter Testing App
+Flutter Testing App Challenge
 
-A new Flutter project.
+### Flutter version 
 
-## Getting Started
+```bash
+Flutter 2.2.2 • channel stable • https://github.com/flutter/flutter.git
+Tools • Dart 2.12.0
+```
+- It's recomended to use the same version and channel
+- Null safety enabled
+------
+### Todo List
 
-This project is a starting point for a Flutter application.
+------
+### Folder Structure
 
-A few resources to get you started if this is your first Flutter project:
+    ├── lib                             # app files
+      ├── main.dart                     # entry point
+        ├── config                      # app configurations files 
+          ├── constants                 # app constants files 
+          ├── error                     # error, failures exceptions constants
+          ├── routes                    # all the app routes, for navigation 
+        ├── bloc                        # All the bussiness logic base on RxDart
+        ├── presentation                # All the screens and shared widgets
+            ├── screens                 # All the screens 
+            ├── shared                  # All shared widgets
+        ├── repositories                # Contracts and implementations
+        ├── services                    # Remote, Local resources (typically http requests)
+    ├── pubspec.yaml                    
+    ├── README.md      
+    ├── tests
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+------
+### Installation
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Clone this repository and go into the folder cloned.
+- Conect a device in order to run rhe app.
+```bash
+flutter pub get
+flutter pub run build_runner build
+flutter run
+```
+- Run in mode release
+```bash
+flutter run --release
+```
+- For iOS target, install pods
+```
+flutter pub get
+cd ios
+pod install
+flutter run
+```
+------
+### Runs Tests
+```
+flutter test
+```
+------
+### What was used in this app:
+- RxDart
+- Mocktail
+- Freezed
+------
+### Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
