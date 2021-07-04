@@ -19,6 +19,12 @@ class CharactersScreen extends StatelessWidget {
           ..allCharacters();
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => characterBloc.allCharacters(),
+        child: const Icon(
+          Icons.refresh,
+        ),
+      ),
       body: Container(
         constraints: const BoxConstraints.expand(),
         child: StreamBuilder(
