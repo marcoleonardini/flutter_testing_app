@@ -8,8 +8,7 @@ class CharacterRemoteService {
   CharacterRemoteService({required Dio dio}) : _dio = dio;
 
   Future<List<CharacterModel>> getAllCharacters() async {
-    final res =
-        await _dio.get<List<Map<String, dynamic>>>(AppEndpoints.allCharacters);
+    final res = await _dio.get(AppEndpoints.allCharacters);
 
     if (res.data == null) {
       return [];
@@ -19,7 +18,7 @@ class CharacterRemoteService {
       final characters = <CharacterModel>[];
 
       for (final item in res.data!) {
-        characters.add(CharacterModel.fromJson(item));
+        characters.add(CharacterModel.fromJson(item as Map<String, dynamic>));
       }
       return characters;
     } else {

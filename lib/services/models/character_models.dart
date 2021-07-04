@@ -5,6 +5,7 @@ part 'character_models.g.dart';
 
 @freezed
 class CharacterModel with _$CharacterModel {
+  @JsonSerializable(anyMap: true, fieldRename: FieldRename.snake)
   const factory CharacterModel({
     required int charId,
     required String name,
