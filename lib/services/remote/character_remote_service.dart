@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_testing_app/config/endpotins.dart';
+import 'package:flutter_testing_app/config/endpoints.dart';
 import 'package:flutter_testing_app/services/models/character_models.dart';
 
 class CharacterRemoteService {

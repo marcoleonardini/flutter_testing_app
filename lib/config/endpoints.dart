@@ -1,7 +1,7 @@
 class AppEndpoints {
   AppEndpoints._();
 
-  static const String baseUrl = 'https://www.breakingbadapi.com/api';
+  static const String baseUrl = 'https://www.breakingbadapi.com';
 
   /// Get all characters
   /// Endpoint to retrieve information from all characters.
