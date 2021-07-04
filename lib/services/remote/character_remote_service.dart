@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_testing_app/config/endpotins.dart';
 import 'package:flutter_testing_app/services/models/character_models.dart';
 
 class CharacterRemoteService {
@@ -6,13 +7,38 @@ class CharacterRemoteService {
 
   CharacterRemoteService({required Dio dio}) : _dio = dio;
 
-  Future<CharacterModel> characterById(int id) {
-    // TODO: implement characterById
-    throw UnimplementedError();
+  Future<List<CharacterModel>> getAllCharacters() async {
+    final res =
+        await _dio.get<List<Map<String, dynamic>>>(AppEndpoints.allCharacters);
+
+    if (res.data == null) {
+      return [];
+    }
+
+    if (res.statusCode == 200) {
+      final characters = <CharacterModel>[];
+
+      for (final item in res.data!) {
+        characters.add(CharacterModel.fromJson(item));
+      }
+      return characters;
+    } else {
+      throw Exception();
+    }
   }
 
-  Future<List<CharacterModel>> getAllCharacters() {
-    // TODO: implement getAllCharacters
-    throw UnimplementedError();
+  Future<CharacterModel> characterById(int id) async {
+    final res = await _dio.get<List<Map<String, dynamic>>>(
+        AppEndpoints.charactersById.replaceAll('{{id}}', '$id'));
+
+    if (res.data == null) {
+      throw Exception();
+    }
+
+    if (res.statusCode == 200) {
+      return CharacterModel.fromJson(res.data![0]);
+    } else {
+      throw Exception();
+    }
   }
 }
