@@ -27,7 +27,7 @@ class CharacterRepositoryImpl implements ICharacterRepository {
   Future<CharactersResponse> getAllCharacters() async {
     try {
       final res = await _characterRemoteService.getAllCharacters();
-      return CharactersResponse(results: res..shuffle());
+      return CharactersResponse(results: res);
     } catch (e) {
       return CharactersResponse.withError(error: 'Error en el enpoint');
     }

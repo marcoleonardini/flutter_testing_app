@@ -7,16 +7,42 @@ class CharacterBloc {
 
   CharacterBloc({required this.characterRepository});
 
-  final BehaviorSubject<CharactersResponse> _subject = BehaviorSubject();
+  final BehaviorSubject<CharacterBlocState> _subject = BehaviorSubject();
 
   Future allCharacters() async {
+    _subject.sink.add(CharacterBlocState.loading());
+
     final response = await characterRepository.getAllCharacters();
-    _subject.sink.add(response);
+    if (response.error == null) {
+      _subject.sink.add(CharacterBlocState.success(list: response.results));
+    } else {
+      _subject.sink.add(CharacterBlocState.error());
+    }
   }
 
-  BehaviorSubject<CharactersResponse> get subject => _subject;
+  BehaviorSubject<CharacterBlocState> get subject => _subject;
 
   void dispose() {
     _subject.close();
   }
 }
+
+class CharacterBlocState {
+  final List<CharacterModel>? list;
+  final CharacterBlocStatus status;
+
+  CharacterBlocState.success({required this.list})
+      : status = CharacterBlocStatus.loaded;
+
+  CharacterBlocState.error()
+      : list = null,
+        status = CharacterBlocStatus.error;
+  CharacterBlocState.loading()
+      : list = null,
+        status = CharacterBlocStatus.loading;
+  CharacterBlocState.initial()
+      : list = null,
+        status = CharacterBlocStatus.initial;
+}
+
+enum CharacterBlocStatus { initial, loading, loaded, error }
