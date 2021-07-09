@@ -15,9 +15,6 @@ void main() {
     );
     test('- Success', () async {
       /// Given
-      // final characterRepositoryImplMock
-
-      /// When
       when(() => characterRemoteServiceMock.getAllCharacters()).thenAnswer(
         (_) => Future.value(
           [
@@ -39,6 +36,7 @@ void main() {
         ),
       );
 
+      /// When
       final res = await characterRepositoryImpl.getAllCharacters();
 
       /// Then
@@ -48,12 +46,10 @@ void main() {
     });
     test('- Error Captured', () async {
       /// Given
-      // final characterRepositoryImplMock
-
-      /// When
       when(() => characterRemoteServiceMock.getAllCharacters())
           .thenThrow(Exception('oops'));
 
+      /// When
       final res = await characterRepositoryImpl.getAllCharacters();
 
       /// Then
@@ -70,9 +66,6 @@ void main() {
     );
     test('- Success', () async {
       /// Given
-      // final characterRepositoryImplMock
-
-      /// When
       when(() => characterRemoteServiceMock.characterById(1)).thenAnswer(
         (_) => Future.value(const CharacterModel(
           charId: 1,
@@ -90,6 +83,7 @@ void main() {
         )),
       );
 
+      /// When
       final res = await characterRepositoryImpl.characterById(1);
 
       /// Then
@@ -99,12 +93,10 @@ void main() {
     });
     test('- Error Captured', () async {
       /// Given
-      // final characterRepositoryImplMock
-
-      /// When
       when(() => characterRemoteServiceMock.characterById(1))
           .thenThrow(Exception('oops'));
 
+      /// When
       final res = await characterRepositoryImpl.characterById(1);
 
       /// Then

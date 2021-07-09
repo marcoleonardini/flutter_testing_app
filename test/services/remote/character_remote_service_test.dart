@@ -16,9 +16,6 @@ void main() {
     setUpAll(() => reset(dioMock));
     test('- Success', () async {
       /// Given
-      // final characterRemoteService
-
-      /// When
       when(() => dioMock.get<List<Map<String, dynamic>>>(
             AppEndpoints.allCharacters,
           )).thenAnswer(
@@ -29,6 +26,7 @@ void main() {
         ),
       );
 
+      /// When
       final res = await characterRemoteService.getAllCharacters();
 
       /// Then
@@ -39,12 +37,11 @@ void main() {
     });
     test('- Exception', () async {
       /// Given
-      // final characterRemoteServiceMock
-
-      /// When
       when(() => dioMock.get<List<Map<String, dynamic>>>(
           AppEndpoints.allCharacters)).thenThrow(Exception());
+
       try {
+        /// When
         await characterRemoteService.getAllCharacters();
       } catch (e) {
         /// Then
@@ -55,9 +52,6 @@ void main() {
     });
     test('- No 200', () async {
       /// Given
-      // final characterRemoteServiceMock
-
-      /// When
       when(() => dioMock.get<List<Map<String, dynamic>>>(
             AppEndpoints.allCharacters,
           )).thenAnswer(
@@ -67,7 +61,9 @@ void main() {
           requestOptions: RequestOptions(path: ''),
         ),
       );
+
       try {
+        /// When
         await characterRemoteService.getAllCharacters();
       } catch (e) {
         /// Then
@@ -78,9 +74,6 @@ void main() {
     });
     test('- null data', () async {
       /// Given
-      // final characterRemoteServiceMock
-
-      /// When
       when(() => dioMock.get<List<Map<String, dynamic>>>(
           AppEndpoints.allCharacters)).thenAnswer(
         (_) async => Response<List<Map<String, dynamic>>>(
@@ -88,7 +81,9 @@ void main() {
           requestOptions: RequestOptions(path: ''),
         ),
       );
+
       try {
+        /// When
         await characterRemoteService.getAllCharacters();
       } catch (e) {
         /// Then
