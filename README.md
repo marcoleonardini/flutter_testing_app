@@ -53,15 +53,26 @@ pod install
 flutter run
 ```
 ------
-### Runs Tests
+### Run Tests
 ```
 flutter test
 ```
+### Run Test, Test Coverage and Open Coverage 
+#####(MacOS)
+```
+bash test.sh
+```
+_required genhtml installed_
+_this bash removes *.g.dart *.freezed.dart files_
+
 ------
 ### What was used in this app:
 - RxDart
+  - Using this in order to learn state managment with streams. (Learning purposes)
 - Mocktail
+  - Using this in order to learn MockTail. (Learning purposes)
 - Freezed
+  - Generator for models
 ------
 ### Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

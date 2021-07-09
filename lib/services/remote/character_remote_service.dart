@@ -28,7 +28,8 @@ class CharacterRemoteService {
 
   Future<CharacterModel> characterById(int id) async {
     final res = await _dio.get<List<Map<String, dynamic>>>(
-        AppEndpoints.charactersById.replaceAll('{{id}}', '$id'));
+      AppEndpoints.charactersById.replaceAll('{{id}}', '$id'),
+    );
 
     if (res.data == null) {
       throw Exception();

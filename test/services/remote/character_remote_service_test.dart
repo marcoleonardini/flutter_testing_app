@@ -114,7 +114,7 @@ void main() {
         (_) async => Response<List<Map<String, dynamic>>>(
           data: [
             {
-              'charId': 1,
+              'char_id': 1,
               'name': "Walter White",
               'birthday': "09-07-1958",
               'occupation': ["High School Chemistry Teacher", "Meth King Pin"],
@@ -124,7 +124,7 @@ void main() {
               'appearance': [1, 2, 3, 4, 5],
               'nickname': "Heisenberg",
               'portrayed': "Bryan Cranston",
-              'betterCallSaulAppearance': [],
+              'better_call_saul_appearance': [],
               'category': '',
             }
           ],
