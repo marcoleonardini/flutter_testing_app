@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_testing_app/bloc/character_bloc.dart';
+import 'package:flutter_testing_app/presentation/screens/detail_screen.dart';
 import 'package:flutter_testing_app/repositories/character_repository.dart';
 import 'package:flutter_testing_app/services/models/character_models.dart';
 
@@ -19,40 +20,57 @@ class _CharactersScreenState extends State<CharactersScreen> {
 
   @override
   void initState() {
+    // TODO: Extract using Dependency Injection
     final characterRemoteService = CharacterRemoteService(dio: Dio());
 
     final characterRepository =
         CharacterRepositoryImpl(characterRemoteService: characterRemoteService);
     characterBloc = CharacterBloc(characterRepository: characterRepository)
       ..allCharacters();
+    // END TODO
     super.initState();
   }
 
   @override
+  void dispose() {
+    characterBloc.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        constraints: const BoxConstraints.expand(),
-        child: StreamBuilder(
-          stream: characterBloc.subject,
-          builder: _streamBuilder,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          iconTheme: IconTheme.of(context).copyWith(color: Colors.black),
+          elevation: 0.0,
+          backgroundColor: Colors.black,
+          title: const Text('Breaking Bad'),
+        ),
+        body: Container(
+          constraints: const BoxConstraints.expand(),
+          padding: const EdgeInsets.all(16),
+          child: StreamBuilder(
+            stream: characterBloc.subject,
+            builder: _streamBuilder,
+          ),
         ),
       ),
     );
   }
 
   Widget _streamBuilder(context, AsyncSnapshot<CharacterBlocState> snapshot) {
-    if (!snapshot.hasData) {
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
-    }
     if (snapshot.hasError) {
       return const Center(
         child: Icon(
           Icons.close,
           color: Colors.red,
         ),
+      );
+    }
+    if (!snapshot.hasData) {
+      return const Center(
+        child: CircularProgressIndicator(),
       );
     }
 
@@ -96,7 +114,7 @@ class CharactersGridView extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
-            onTap: () {},
+            onTap: () => _navigateToDetail(context, list[index].charId),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Stack(
@@ -152,6 +170,17 @@ class CharactersGridView extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  void _navigateToDetail(BuildContext context, int id) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DetailScreen(
+          id: id,
+        ),
+      ),
     );
   }
 }
