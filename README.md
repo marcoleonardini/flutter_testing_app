@@ -4,7 +4,7 @@ Flutter Testing App Challenge
 ### Flutter version 
 
 ```bash
-Flutter 2.2.2 • channel stable • https://github.com/flutter/flutter.git
+Flutter 2.2.3 • channel stable • https://github.com/flutter/flutter.git
 Tools • Dart 2.12.0
 ```
 - It's recomended to use the same version and channel
@@ -58,7 +58,7 @@ flutter run
 flutter test
 ```
 ### Run Test, Test Coverage and Open Coverage 
-#####(MacOS)
+##### (MacOS)
 ```
 bash test.sh
 ```
