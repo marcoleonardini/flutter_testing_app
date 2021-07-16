@@ -30,7 +30,7 @@ class CharactersResponse {
 
   CharactersResponse({this.results}) : error = null;
 
-  CharactersResponse.withError({this.error}) : results = null;
+  CharactersResponse.withError({required this.error}) : results = null;
 }
 
 class CharacterResponse {

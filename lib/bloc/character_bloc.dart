@@ -9,14 +9,14 @@ class CharacterBloc {
 
   final BehaviorSubject<CharacterBlocState> _subject = BehaviorSubject();
 
-  Future allCharacters() async {
+  Future<void> allCharacters() async {
     _subject.sink.add(CharacterBlocState.loading());
 
     final response = await characterRepository.getAllCharacters();
     if (response.error == null) {
       _subject.sink.add(CharacterBlocState.success(list: response.results));
     } else {
-      _subject.sink.add(CharacterBlocState.error());
+      _subject.sink.addError(Exception());
     }
   }
 

@@ -104,7 +104,7 @@ void main() {
 
       /// When
       when(() => dioMock.get<List<Map<String, dynamic>>>(
-            AppEndpoints.charactersById.replaceAll('{{id}}', '1'),
+            any(),
           )).thenAnswer(
         (_) async => Response<List<Map<String, dynamic>>>(
           data: [

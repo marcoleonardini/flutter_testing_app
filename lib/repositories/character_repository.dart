@@ -19,7 +19,7 @@ class CharacterRepositoryImpl implements ICharacterRepository {
       final res = await _characterRemoteService.characterById(id);
       return CharacterResponse(results: res);
     } catch (e) {
-      return CharacterResponse.withError(error: 'Error en el enpoint');
+      return CharacterResponse.withError(error: 'Endpoint Error');
     }
   }
 
@@ -29,7 +29,7 @@ class CharacterRepositoryImpl implements ICharacterRepository {
       final res = await _characterRemoteService.getAllCharacters();
       return CharactersResponse(results: res);
     } catch (e) {
-      return CharactersResponse.withError(error: 'Error en el enpoint');
+      return CharactersResponse.withError(error: 'Endpoint Error');
     }
   }
 }
