@@ -22,6 +22,19 @@ class CharacterModel with _$CharacterModel {
 
   factory CharacterModel.fromJson(Map<String, dynamic> json) =>
       _$CharacterModelFromJson(json);
+  factory CharacterModel.fromFakeData() => const CharacterModel(
+        charId: 1,
+        name: ' name',
+        birthday: ' birthday',
+        occupation: [],
+        img: ' img',
+        status: ' status',
+        nickname: ' nickname',
+        appearance: [],
+        portrayed: ' portrayed',
+        category: ' category',
+        betterCallSaulAppearance: [],
+      );
 }
 
 class CharactersResponse {
