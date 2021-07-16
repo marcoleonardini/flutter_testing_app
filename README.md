@@ -1,6 +1,9 @@
 # Flutter Testing App
 Flutter Testing App Challenge
 
+This project was build in order to learn unit, widget and integration testing.
+
+
 ### Flutter version 
 
 ```bash
@@ -10,8 +13,30 @@ Tools • Dart 2.12.0
 - It's recomended to use the same version and channel
 - Null safety enabled
 ------
-### Todo List
+### Todo's List
+```
+[x] Tests for list of characters services, repositories and bloc
+[x] Local storage service for home(list of characters)
+[x] Repository for home(list of characters)
+[x] Screens for home(list of characters)
+[x] Bloc for home(list of characters)
 
+[x] Tests for detail character services, repositories and bloc
+[x] Local storage service for home(list of characters)
+[x] Repository for home(list of characters)
+[x] Screens for home(list of characters)
+[x] Bloc for home(list of characters)
+
+[ ] Local test for favoorites services, repository and bloc
+[ ] Local storage service for favorites
+[ ] Repository for favorites
+[ ] Screens for favorites
+[ ] Bloc for favorites
+
+[ ] Widget Testing
+[ ] Integration Testing
+
+```
 ------
 ### Folder Structure
 
