@@ -23,6 +23,8 @@ class DetailCharacterBloc {
 
   BehaviorSubject<DetailCharacterBlocState> get subject => _subject;
 
+  // TODO: How to test dispose Statements
+  // Is that necessary??
   void dispose() {
     _subject.close();
   }
@@ -35,6 +37,8 @@ class DetailCharacterBlocState {
   DetailCharacterBlocState.success({required this.character})
       : status = DetailCharacterBlocStatus.loaded;
 
+  // TODO: How to test this constructor
+  // Is that necessary??
   DetailCharacterBlocState.error()
       : character = null,
         status = DetailCharacterBlocStatus.error;

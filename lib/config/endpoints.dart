@@ -1,4 +1,6 @@
 class AppEndpoints {
+  // TODO: How to test private constructors
+  // Is that necessary??
   AppEndpoints._();
 
   static const String baseUrl = 'https://www.breakingbadapi.com';
