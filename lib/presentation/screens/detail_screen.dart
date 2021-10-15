@@ -26,11 +26,8 @@ class _DetailScreenState extends State<DetailScreen> {
     // TODO: Extract using Dependency Injection
     final characterRemoteService = CharacterRemoteService(dio: Dio());
 
-    final characterRepository =
-        CharacterRepositoryImpl(characterRemoteService: characterRemoteService);
-    characterBloc =
-        DetailCharacterBloc(characterRepository: characterRepository)
-          ..charactersById(widget.id);
+    final characterRepository = CharacterRepositoryImpl(characterRemoteService: characterRemoteService);
+    characterBloc = DetailCharacterBloc(characterRepository: characterRepository)..charactersById(widget.id);
     // END TODO
     super.initState();
   }
@@ -62,8 +59,7 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 
-  Widget _streamBuilder(
-      context, AsyncSnapshot<DetailCharacterBlocState> snapshot) {
+  Widget _streamBuilder(context, AsyncSnapshot<DetailCharacterBlocState> snapshot) {
     if (snapshot.hasError) {
       return const Center(
         child: Icon(
@@ -111,13 +107,12 @@ class DetailScreenWidget extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          _CharacterImage(character: character),
-          const SizedBox(height: 12),
           _CustomText(text: character.name, fontSize: 40),
           _CustomText(text: character.nickname),
+          const SizedBox(height: 12),
+          _CharacterImage(character: character),
           const Divider(color: Colors.black45),
-          _CustomText(
-              text: 'Appearences: ${character.appearance.length} Seasons'),
+          _CustomText(text: 'Appearences: ${character.appearance.length} Seasons'),
           _CustomText(text: 'Birthday: ${character.birthday}'),
           _CustomText(text: 'Occupation: ${character.occupation[0]} '),
           _CustomText(text: 'Portrayed: ${character.portrayed}'),
