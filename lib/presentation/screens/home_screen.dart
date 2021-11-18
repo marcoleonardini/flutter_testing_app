@@ -23,10 +23,8 @@ class _CharactersScreenState extends State<CharactersScreen> {
     // TODO: Extract using Dependency Injection
     final characterRemoteService = CharacterRemoteService(dio: Dio());
 
-    final characterRepository =
-        CharacterRepositoryImpl(characterRemoteService: characterRemoteService);
-    characterBloc = CharacterBloc(characterRepository: characterRepository)
-      ..allCharacters();
+    final characterRepository = CharacterRepositoryImpl(characterRemoteService: characterRemoteService);
+    characterBloc = CharacterBloc(characterRepository: characterRepository)..allCharacters();
     // END TODO
     super.initState();
   }
@@ -76,7 +74,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
 
     switch (snapshot.data!.status) {
       case CharacterBlocStatus.error:
-        return const Center(
+        return Center(
           child: Icon(
             Icons.close,
             color: Colors.red,
@@ -107,8 +105,7 @@ class CharactersGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      gridDelegate:
-          const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
       itemCount: list.length,
       itemBuilder: (context, index) {
         return Padding(
@@ -154,8 +151,7 @@ class CharactersGridView extends StatelessWidget {
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 4, horizontal: 12),
+                      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
                       width: double.infinity,
                       color: Colors.white54,
                       child: Text(
